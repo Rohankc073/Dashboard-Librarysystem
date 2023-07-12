@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -17,7 +12,7 @@ import view.DashboardView;
 
 /**
  *
- * @author Bibhakta lamsal
+ * @author Rohan KC
  */
 public class AddreturnController {
      AddreturnModel model3;
@@ -25,25 +20,17 @@ public class AddreturnController {
     ResultSet rs;
     PreparedStatement pst=null;
     private String errorMessage;
-
-    
-   
-    
     public  AddreturnController(DashboardView view)
         {
-            
             this.view=view;
             view.addAddreturnListner(new AddreturnListener());
         }
-    
         class AddreturnListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             try
             {
-                
             model3=view.getReturn();
             if (validateAddreturn(model3)) {
                 if (checkUser3(model3)) {
@@ -52,44 +39,33 @@ public class AddreturnController {
             } else {
                 view.setMessage("Validation Error: " + errorMessage);
             }
-
-
             }
             catch(Exception e1)
             {
                System.out.println(e1.getMessage());
             }
-
         }
-        
-        
       public boolean validateAddreturn(AddreturnModel addreturnModel) {
     // Validate username
     if (addreturnModel.getBook_id().isEmpty()) {
         errorMessage = "id is required.";
         return false;
     }
-
     // Validate firstname
     if (addreturnModel.getUser_id().isEmpty()) {
         errorMessage = " name is required.";
         return false;
     }
-
     // Validate lastname
     if (addreturnModel.getIssue_date().isEmpty()) {
         errorMessage = "phonenum is required.";
         return false;
     }
-
     // Validate gmail
     if (addreturnModel.getDuedate().isEmpty()) {
         errorMessage = "father name is required.";
         return false;
     }
-
-    
-
     // All fields are valid
     errorMessage = null;
     return true;
