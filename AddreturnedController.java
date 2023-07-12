@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -14,10 +9,9 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 import view.DashboardView;
-
 /**
  *
- * @author Bibhakta lamsal
+ * @author Rohan KC
  */
 public class AddreturnedController {
     AddreturnedModel model6;
@@ -25,25 +19,17 @@ public class AddreturnedController {
     ResultSet rs;
     PreparedStatement pst;
     private String errorMessage;
-
-    
-   
-    
     public  AddreturnedController(DashboardView view)
         {
-            
             this.view=view;
             view.addAddreturnedListner(new AddreturnedListener());
         }
-    
         class AddreturnedListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             try
             {
-                
             model6=view.getReturnedUser();
                 if (checkUser7(model6)) {
                     view.setMessage("Book added Successfully"); 
@@ -58,14 +44,8 @@ public class AddreturnedController {
             {
                System.out.println(e1.getMessage());
             }
-
         }
-        
-
-
 }
-       
-
 public boolean checkUser7(AddreturnedModel user) throws Exception {
      try {
         Class.forName("com.mysql.cj.jdbc.Driver");
